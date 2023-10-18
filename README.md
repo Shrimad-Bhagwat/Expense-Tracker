@@ -11,6 +11,18 @@ Welcome to Expense-Tracker, a Flutter project designed to help you keep track of
 
 The main page features a bar graph representation of your expenses, along with support for both light and dark themes based on the system theme. Below the graph, you'll find a list of expenses with their respective details and icons for easy management.
 
+## Project Screenshots
+
+<p align="center">
+  <img src="./images/expense_tracker_home_light.png" alt="Home Light" width="200"/>
+  <img src="./images/expense_tracker_home.png" alt="Home Dark" width="200"/>
+  <img src="./images/expense_tracker_add.png" alt="Add Expense" width="200"/>
+</p>
+<p align="center">
+  <img src="./images/expense_tracker_horiz.png" alt="Home Light" height="200"/>
+</p>
+
+
 ## 🚀 Getting Started
 
 Follow these steps to set up and run the Expense-Tracker project on your local machine:
