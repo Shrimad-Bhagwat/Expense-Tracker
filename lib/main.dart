@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/widgets/expenses.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const MyApp());
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp
+  // ]).then((fn) {
+    runApp(const MyApp());
+  // });
+
 }
 
 var kColorScheme = ColorScheme.fromSeed(seedColor: const Color.fromARGB(
