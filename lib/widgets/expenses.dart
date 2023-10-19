@@ -5,6 +5,7 @@ import 'package:expense_tracker/widgets/new_expense.dart';
 import 'package:flutter/material.dart';
 
 import '../models/expense.dart';
+import '../models/expenses_storage.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({super.key});
@@ -12,32 +13,37 @@ class Expenses extends StatefulWidget {
   @override
   State<Expenses> createState() => _ExpensesState();
 }
-
+List<Expense> _registeredExpenses = [];
 class _ExpensesState extends State<Expenses> {
-  final List<Expense> _registeredExpenses = [
-    Expense(
-        title: 'Flutter Course',
-        amount: 480,
-        date: DateTime.now(),
-        category: Category.work),
-    Expense(
-        title: 'Zomato',
-        amount: 250,
-        date: DateTime.now(),
-        category: Category.food),
-  ];
+  final ExpensesStorage _expensesStorage = ExpensesStorage();
+  @override
+  void initState() {
+    super.initState();
 
-  void _addExpense(Expense expense) {
+    _loadExpenses();
+  }
+
+  Future<void> _loadExpenses() async {
+    List<Expense> loadedExpenses = await _expensesStorage.loadExpenses();
     setState(() {
-      _registeredExpenses.add(expense);
+      _registeredExpenses = loadedExpenses;
     });
   }
 
-  void _removeExpense(Expense expense) {
+  Future<void> _addExpense(Expense expense) async {
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
+    await _expensesStorage.saveExpenses(_registeredExpenses);
+  }
+
+  Future<void> _removeExpense(Expense expense) async {
     final expenseIndex = _registeredExpenses.indexOf(expense);
     setState(() {
       _registeredExpenses.remove(expense);
     });
+    await _expensesStorage.saveExpenses(_registeredExpenses);
+
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -47,10 +53,36 @@ class _ExpensesState extends State<Expenses> {
           setState(() {
             _registeredExpenses.insert(expenseIndex, expense);
           });
+          _expensesStorage.saveExpenses(_registeredExpenses);
         }),
       ),
     );
   }
+
+  // void _addExpense(Expense expense) {
+  //   setState(() {
+  //     _registeredExpenses.add(expense);
+  //   });
+  // }
+  //
+  // void _removeExpense(Expense expense) {
+  //   final expenseIndex = _registeredExpenses.indexOf(expense);
+  //   setState(() {
+  //     _registeredExpenses.remove(expense);
+  //   });
+  //   ScaffoldMessenger.of(context).clearSnackBars();
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       duration: const Duration(seconds: 3),
+  //       content: const Text('Expense Deleted'),
+  //       action: SnackBarAction(label: 'Undo', onPressed: (){
+  //         setState(() {
+  //           _registeredExpenses.insert(expenseIndex, expense);
+  //         });
+  //       }),
+  //     ),
+  //   );
+  // }
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
