@@ -14,12 +14,16 @@ The main page features a bar graph representation of your expenses, along with s
 ## Project Screenshots
 
 <p align="center">
-  <img src="./images/expense_tracker_home_light.png" alt="Home Light" width="200"/>
-  <img src="./images/expense_tracker_home.png" alt="Home Dark" width="200"/>
-  <img src="./images/expense_tracker_add.png" alt="Add Expense" width="200"/>
+
+<img src="https://github.com/Shrimad-Bhagwat/Expense-Tracker/assets/51125208/9fb19bb3-4058-4ba9-af73-308d06c9ece4" width=30%>
+<img src="https://github.com/Shrimad-Bhagwat/Expense-Tracker/assets/51125208/fda9c726-7b45-4d02-9db5-515278fd878f" width=30%>
+<img src="https://github.com/Shrimad-Bhagwat/Expense-Tracker/assets/51125208/b36b1b80-1fde-4179-9d02-61185bc55eb2" width=30%>
+
 </p>
+
 <p align="center">
-  <img src="./images/expense_tracker_horiz.png" alt="Home Light" height="200"/>
+  <img src="https://github.com/Shrimad-Bhagwat/Expense-Tracker/assets/51125208/439b6f32-e0a8-4149-a4c1-4badf33e2df4" alt="Home Light" width="75%"/>
+
 </p>
 
 
